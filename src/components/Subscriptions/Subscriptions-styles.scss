@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat"),
+    url("../../fonts/Montserrat-Regular.woff") format("woff");
+}
+.subscriptions-wrapper {
+  width: 250px;
+  height: 270px;
+  border: 2px solid #f5f5f5;
+}
+.subscriptions-text-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 5px 8px;
+}
+.subscriptions-stories {
+  font-family: "Montserrat";
+  color: #aca8a8;
+  font-size: 14px;
+}
+.subscriptions-link {
+  font-family: "Montserrat";
+  color: #181818;
+  font-size: 14px;
+  text-decoration: none;
+}
+.subscriptions-users {
+  overflow-y: scroll;
+  padding-left: 5px;
+}
