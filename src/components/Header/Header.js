@@ -10,7 +10,12 @@ const Header = () => {
         <img src={logo} alt={logo} width={"130"} className="header-logo-img" />
       </a>
       <a href={"/#"} className="instagram-user-link">
-        <img src={user} alt={user} width={"50"} className="header-user-img" />
+        <img
+          src={user}
+          alt={user}
+          width={"50"}
+          className="header-user-img avatar"
+        />
       </a>
     </div>
   );

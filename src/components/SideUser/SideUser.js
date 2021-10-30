@@ -1,18 +1,17 @@
 import React from "react";
-import user from "../../images/user.jpg";
 import "./SideUser-styles.scss";
 
-const SideUser = () => {
+const SideUser = ({ img, nickname, sidename }) => {
   return (
     <div className="side-user-wrapper">
       <a href={"/#"} className="side-img-link">
-        <img src={user} alt={user} width={"50"} className="side-img" />
+        <img src={img} alt={img} width={"50"} className="side-img avatar" />
       </a>
       <div className="side-text-wrapper">
         <a href={"/#"} className="side-link">
-          <p className="side-nickname">funnydoge2021</p>
+          <p className="side-nickname">{nickname}</p>
         </a>
-        <p className="side-name">Funny Doge</p>
+        <p className="side-name">{sidename}</p>
       </div>
     </div>
   );

@@ -1,4 +1,14 @@
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat"),
+    url("./fonts/Montserrat-Regular.woff") format("woff");
+}
+
 .app-wrapper {
   width: 615px;
   margin: 0 auto;
+}
+.avatar {
+  //этот класс дается всем аватаркам пользователей
+  border-radius: 50%;
 }

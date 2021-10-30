@@ -1,5 +1,6 @@
 import React from "react";
 import "./Subscriptions-styles.scss";
+import SubscriptionsUsers from "../SubscriptionsUsers/SubscriptionsUsers";
 
 const Subscriptions = () => {
   return (
@@ -10,7 +11,7 @@ const Subscriptions = () => {
           <span className="subscriptions-check">Check all</span>
         </a>
       </div>
-      <div className="subscriptions-users">Some users</div>
+      <SubscriptionsUsers />
     </div>
   );
 };
