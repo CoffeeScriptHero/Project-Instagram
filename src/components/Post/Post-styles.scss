@@ -1,7 +1,7 @@
 .post-wrapper {
   border: 2px solid #e7e7e7;
   width: 615px;
-  height: 900px;
+  max-height: 960px;
   margin-bottom: 50px;
 }
 .post-header {
@@ -26,4 +26,18 @@
 }
 .post-icons-wrapper {
   padding: 10px 8px 16px 16px;
+}
+.post-description-wrapper {
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+.post-description-user {
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-size: 13px;
+  padding-right: 10px;
+}
+.post-description-text {
+  font-family: "Montserrat";
+  font-size: 14px;
 }
