@@ -1,6 +1,29 @@
 .commentary-form {
   display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
 }
 .commentary-field {
-  width: 100%;
+  width: 70%;
+  height: 22px;
+  font-family: "Montserrat";
+  font-size: 13px;
+}
+.commentary-button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  height: 25px;
+  background: transparent;
+  color: #0095f6;
+  line-height: normal;
+  opacity: 0.3;
+  font-family: "Montserrat";
+}
+.commentary-button--active {
+  opacity: 1;
+  cursor: pointer;
+}
+.commentary-field--bigger {
+  overflow-y: scroll;
 }
