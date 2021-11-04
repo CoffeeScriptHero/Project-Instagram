@@ -3,10 +3,10 @@ import "./Commentary-styles.scss";
 import { useEffect } from "react";
 
 const Commentary = () => {
-  const textAreaHandler = (e) => {
+  const buttonHandler = (e) => {
+    const form = e.target.parentElement;
     const text = e.target.value;
-    const btn = document.getElementsByClassName("commentary-button")[0];
-    console.log(e.target.querySelectorAll(".commentary-button"));
+    const btn = form.querySelector(".commentary-button");
     const activeClass = "commentary-button--active";
     if (text.trim() !== "") {
       btn.classList.add(activeClass);
@@ -15,7 +15,6 @@ const Commentary = () => {
       if (btn.classList.contains(activeClass)) {
         btn.classList.remove(activeClass);
         btn.disabled = true;
-        console.log("good");
       }
     }
   };
@@ -41,7 +40,7 @@ const Commentary = () => {
         "input",
         (e) => {
           keyUpHandler(e);
-          textAreaHandler(e);
+          buttonHandler(e);
         },
         false
       );
@@ -54,9 +53,6 @@ const Commentary = () => {
         <textarea
           className="commentary-field"
           placeholder="Добавьте комментарий.."
-          // onChange={(e) => {
-          //   textAreaHandler(e);
-          // }}
         ></textarea>
         <button className="commentary-button" type="submit" disabled>
           Опубликовать
