@@ -3,6 +3,7 @@
   width: 615px;
   max-height: 960px;
   margin-bottom: 50px;
+  font-family: "Montserrat";
 }
 .post-header {
   display: flex;
@@ -13,7 +14,6 @@
 .post-user-nickname {
   color: #0c0c0c;
   text-decoration: none;
-  font-family: "Montserrat";
   font-size: 13px;
   margin-left: 10px;
   font-weight: 600;
@@ -32,12 +32,10 @@
   padding-left: 20px;
 }
 .post-description-user {
-  font-family: "Montserrat";
   font-weight: 700;
   font-size: 13px;
   padding-right: 10px;
 }
 .post-description-text {
-  font-family: "Montserrat";
   font-size: 14px;
 }

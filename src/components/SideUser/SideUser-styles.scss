@@ -3,13 +3,13 @@
   height: 50px;
   display: flex;
   margin-bottom: 10px;
+  font-family: "Montserrat";
 }
 .side-text-wrapper {
   padding-top: 7px;
   margin-left: 12px;
 }
 .side-link {
-  font-family: "Montserrat";
   font-weight: 700;
   color: #000000;
   font-size: 12px;
@@ -19,8 +19,14 @@
   margin: 0;
 }
 .side-name {
-  font-family: "Montserrat";
   color: #949494;
   font-size: 12px;
   margin: 5px 0 0 0;
+}
+.side-subscribe-button {
+  text-decoration: none;
+  color: #4e9bb4;
+  font-family: "serif";
+  font-size: 16px;
+  padding: 20px 0 0 40px;
 }

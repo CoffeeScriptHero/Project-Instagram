@@ -1,7 +1,7 @@
 import React from "react";
 import "./SideUser-styles.scss";
 
-const SideUser = ({ img, nickname, sidename }) => {
+const SideUser = ({ img, nickname, sidename = "", button }) => {
   return (
     <div className="side-user-wrapper">
       <a href={"/#"} className="side-img-link">
@@ -13,6 +13,11 @@ const SideUser = ({ img, nickname, sidename }) => {
         </a>
         <p className="side-name">{sidename}</p>
       </div>
+      {button && (
+        <a href={"/#"} className="side-subscribe-button">
+          Subscribe
+        </a>
+      )}
     </div>
   );
 };
