@@ -89,7 +89,9 @@ const getUser = (index) => {
         firstName: firstName,
         password: getPassword(),
         webSite: getWebSite(username),
-        aboutMe: getAboutMe(firstName)
+        aboutMe: getAboutMe(firstName),
+        subscribers: [],
+        subscriptions: []
     };
 };
 module.exports = Array.from({length: USER_COUNT},(_, index) => getUser(index + 1));

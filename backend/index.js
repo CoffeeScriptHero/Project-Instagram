@@ -14,14 +14,19 @@ async function main() {
 
     await connectToDatabase();
 
+
     const port = ConfigService.get('APP_PORT');
     app.listen(port, () => {
-        // for(const chooseUser of getUsers) {
-        //     const user = new User(chooseUser);
-        //     await user.save()
-        // }
+        // generateUsers()
         console.log(`App start on port ${port}`);
     });
 }
+
+// async function generateUsers() {
+//     for(const chooseUser of getUsers) {
+//         const user = new User(chooseUser);
+//         await user.save()
+//     }
+// }
 
 main();

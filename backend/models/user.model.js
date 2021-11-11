@@ -7,7 +7,9 @@ const UserSchema = mongoose.Schema({
     firstName: String,
     password: String,
     webSite: String,
-    aboutMe: String
+    aboutMe: String,
+    subscribers: [Number],
+    subscriptions: [Number]
 })
 
 module.exports = mongoose.model('User', UserSchema)
