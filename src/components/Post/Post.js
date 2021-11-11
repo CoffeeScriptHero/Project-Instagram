@@ -3,7 +3,7 @@ import "./Post-styles.scss";
 import Icon from "../Icon/Icon";
 import Commentary from "../Commentary/Commentary";
 
-const Post = ({ avatar, nickname, img, description }) => {
+const Post = ({ avatar, nickname, img, description, comments }) => {
   return (
     <div className="post-wrapper">
       <div className="post-header">
@@ -30,7 +30,7 @@ const Post = ({ avatar, nickname, img, description }) => {
           <span className="post-description-user">{nickname}</span>
           <span className="post-description-text">{description}</span>
         </div>
-        <Commentary />
+        <Commentary comments={comments} />
       </div>
     </div>
   );
