@@ -1,0 +1,46 @@
+.commentary-form {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+.commentary-field {
+  width: 70%;
+  height: 22px;
+  font-family: "Montserrat";
+  font-size: 13px;
+}
+.commentary-button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  height: 25px;
+  background: transparent;
+  color: #0095f6;
+  line-height: normal;
+  opacity: 0.3;
+  font-family: "Montserrat";
+}
+.commentary-button--active {
+  opacity: 1;
+  cursor: pointer;
+}
+.commentary-field--bigger {
+  overflow-y: scroll;
+}
+.no-comments-text {
+  text-align: center;
+  font-size: 12px;
+  color: grey;
+  margin: 0;
+}
+.comment-nickname {
+  font-weight: 700;
+  font-size: 13px;
+  padding-right: 10px;
+  padding-left: 20px;
+}
+
+.comment-text {
+  font-size: 14px;
+}

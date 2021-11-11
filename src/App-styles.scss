@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat"),
+    url("./fonts/Montserrat-Regular.woff") format("woff");
+}
+textarea {
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+}
+.avatar {
+  //этот класс дается всем аватаркам пользователей
+  border-radius: 50%;
+}
