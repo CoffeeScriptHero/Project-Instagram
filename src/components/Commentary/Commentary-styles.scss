@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-around;
   margin-bottom: 10px;
+  margin-top: 20px;
 }
 .commentary-field {
   width: 70%;
@@ -26,4 +27,20 @@
 }
 .commentary-field--bigger {
   overflow-y: scroll;
+}
+.no-comments-text {
+  text-align: center;
+  font-size: 12px;
+  color: grey;
+  margin: 0;
+}
+.comment-nickname {
+  font-weight: 700;
+  font-size: 13px;
+  padding-right: 10px;
+  padding-left: 20px;
+}
+
+.comment-text {
+  font-size: 14px;
 }
