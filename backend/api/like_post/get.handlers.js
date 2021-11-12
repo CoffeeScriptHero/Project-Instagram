@@ -1,18 +1,18 @@
-const Post = require('../../models/post.model');
+const LikePost = require('../../models/like.post.model');
 
 
-exports.getPostsByUserId = async (req, res) => {
-    const post = await Post.find({user_id: req.params.user_id}).exec();
+exports.getLikesPostByPostId = async (req, res) => {
+    const likesPost = await LikePost.find({post_id: req.params.post_id}).exec();
 
-    if(!post) {
-        res.status(404).send('Posts not found!').end();
+    if(!likesPost) {
+        res.status(404).send('No likes found for this post!').end();
     }
 
-    res.send(post).end();
+    res.send(likesPost).end();
 };
 
-exports.getPosts = async (req, res) => {
-    const posts = await Post.find().exec();
+exports.getLikesPost = async (req, res) => {
+    const likesPost = await LikePost.find().exec();
 
-    res.send(posts).end();
+    res.send(likesPost).end();
 };
