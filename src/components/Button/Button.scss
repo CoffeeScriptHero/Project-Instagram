@@ -1,0 +1,75 @@
+.btn {
+  &__success {
+    background: #3b75c1;
+    color: white;
+  }
+
+  &__danger {
+    background: #c44747;
+    color: white;
+  }
+
+  &__close {
+    margin: auto 0;
+    padding: 0;
+    position: relative;
+    width: 32px;
+    height: 32px;
+    background: rgba(0, 0, 0, 0);
+
+  }
+
+  &__close:before, &__close:after {
+    position: absolute;
+    left: 15px;
+    top: 0;
+    content: '';
+    height: 33px;
+    width: 2px;
+    background-color: rgba(0,0,0,0.4)
+  }
+
+  &__close:before {
+    transform: rotate(45deg);
+  }
+
+  &__close:after {
+    transform: rotate(-45deg);
+  }
+
+  &__control {
+    color: white;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  &__add-cart {
+    display: block;
+    margin: 0 0 0 auto;
+    background: #454545;
+    color: white;
+  }
+
+  &__add-cart:hover {
+    background: #000;
+  }
+
+  &__star {
+    display: block;
+    background-color: rgba(0, 0, 0, 0);
+    width: 25px;
+    height: 25px;
+    border: none;
+    outline: none;
+    margin: 0 0 0 auto;
+    padding: 0;
+  }
+
+  margin: 15px;
+  padding: 10px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
