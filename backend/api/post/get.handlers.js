@@ -1,18 +1,18 @@
-const User = require('../../models/user.model');
+const Post = require('../../models/post.model');
 
 
 exports.getPostsByUserId = async (req, res) => {
-    const user = await User.findById(req.params.id).exec();
+    const post = await Post.find({user_id: req.params.user_id}).exec();
 
-    if(!user) {
-        res.status(404).send('User not found!').end();
+    if(!post) {
+        res.status(404).send('Posts not found!').end();
     }
 
-    res.send(user).end();
+    res.send(post).end();
 };
 
 exports.getPosts = async (req, res) => {
-    const users = await User.find().exec();
+    const posts = await Post.find().exec();
 
-    res.send(users).end();
+    res.send(posts).end();
 };
