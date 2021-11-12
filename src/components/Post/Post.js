@@ -2,8 +2,12 @@ import React from "react";
 import "./Post-styles.scss";
 import Icon from "../Icon/Icon";
 import Commentary from "../Commentary/Commentary";
+import { useState } from "react";
 
 const Post = ({ avatar, nickname, img, description, comments }) => {
+  const [filled, setFilled] = useState(false);
+  const color = filled === true ? "red" : "black";
+
   return (
     <div className="post-wrapper">
       <div className="post-header">
@@ -24,7 +28,15 @@ const Post = ({ avatar, nickname, img, description, comments }) => {
       </div>
       <div className="post-footer">
         <div className="post-icons-wrapper">
-          <Icon type={"like"} className="post-like-svg" />
+          <Icon
+            type={"like"}
+            className="post-like-svg"
+            color={color}
+            filled={filled}
+            onClick={() => {
+              setFilled(!filled);
+            }}
+          />
         </div>
         <div className="post-description-wrapper">
           <span className="post-description-user">{nickname}</span>
