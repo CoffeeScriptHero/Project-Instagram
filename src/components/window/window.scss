@@ -1,0 +1,32 @@
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //z-index: -14;
+  background-color: rgba(0, 0, 0, .7);
+}
+.post{
+  width: 900px;
+  height: 600px;
+  background: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  &__image {
+    background: #ffff;
+  }
+  &__info {
+    background: palegreen;
+  }
+  &__info-icon {
+
+  }
+  &__info-input {
+
+  }
+}
