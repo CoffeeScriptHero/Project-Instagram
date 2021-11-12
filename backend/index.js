@@ -3,26 +3,25 @@
 // const Post = require('./models/post.model');
 // const getPosts = require('./collection_generators/post.generator');
 
-const express = require('express');
-const ConfigService = require('./helpers/config.service');
-const { connectToDatabase } = require('./helpers/db.helper');
-const routersRegister = require('./api/index');
+const express = require("express");
+const ConfigService = require("./helpers/config.service");
+const { connectToDatabase } = require("./helpers/db.helper");
+const routersRegister = require("./api/index");
 
 // ConfigService.init();
 const app = express();
 
 async function main() {
-    routersRegister(app);
+  routersRegister(app);
 
-    await connectToDatabase();
+  await connectToDatabase();
 
-
-    const port = ConfigService.get('APP_PORT');
-    app.listen(port, () => {
-        // generateUsers()
-        // generatePosts()
-        console.log(`App start on port ${port}`);
-    });
+  const port = ConfigService.get("APP_PORT");
+  app.listen(port, () => {
+    // generateUsers()
+    // generatePosts()
+    console.log(`App start on port ${port}`);
+  });
 }
 
 // async function generateUsers() {

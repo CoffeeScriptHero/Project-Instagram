@@ -40,7 +40,17 @@
   padding-right: 10px;
   padding-left: 20px;
 }
-
 .comment-text {
   font-size: 14px;
+}
+.show-more-wrapper {
+  padding: 10px 0 0 20px;
+}
+.comments-show-more {
+  font-size: 13px;
+  color: #a0a0a0;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 }

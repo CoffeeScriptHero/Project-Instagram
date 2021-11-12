@@ -84,7 +84,11 @@ const Posts = () => {
         nickname={"deniskozarenko"}
         img={img1}
         description={"Amazing view!"}
-        comments={[]}
+        comments={[
+          { nickname: "Trinity", text: "nice view" },
+          { nickname: "igor", text: "great" },
+          { nickname: "vasya", text: "1212?" },
+        ]}
       />
     </div>
   );

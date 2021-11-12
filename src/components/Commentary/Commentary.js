@@ -16,6 +16,13 @@ const Commentary = ({ comments }) => {
             <span className="comment-text">{lastComment.text}</span>
           </div>
         )}
+        {comments.length >= 2 && (
+          <div className="show-more-wrapper">
+            <a href={"/#"} className="comments-show-more">
+              Показать больше ({comments.length})
+            </a>
+          </div>
+        )}
       </div>
       <form className="commentary-form">
         <textarea
