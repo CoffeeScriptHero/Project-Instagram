@@ -24,15 +24,14 @@ const Posts = () => {
 
   const keyUpHandler = (e) => {
     const textArea = e.target;
-    textArea.style.height = "18px";
-    if (textArea.scrollHeight > 64) {
+    textArea.style.height = "26px";
+    if (textArea.scrollHeight > 26) {
       textArea.classList.add("commentary-field--bigger");
-      textArea.style.height = "64px";
+      textArea.style.height = "26px";
     } else {
       if (textArea.classList.contains("commentary-field--bigger")) {
         textArea.classList.remove("commentary-field--bigger");
       }
-      textArea.style.height = textArea.scrollHeight + "px";
     }
   };
 

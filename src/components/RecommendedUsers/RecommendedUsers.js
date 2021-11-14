@@ -8,6 +8,8 @@ const RecommendedUsers = () => {
       <SideUser img={user} nickname={"vitalii_g"} button={true} />
       <SideUser img={user} nickname={"vitalii_g"} button={true} />
       <SideUser img={user} nickname={"vitalii_g"} button={true} />
+      <SideUser img={user} nickname={"vitalii_g"} button={true} />
+      <SideUser img={user} nickname={"vitalii_g"} button={true} />
     </div>
   );
 };

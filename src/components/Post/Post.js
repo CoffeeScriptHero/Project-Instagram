@@ -1,7 +1,8 @@
 import React from "react";
 import "./Post-styles.scss";
 import Icon from "../Icon/Icon";
-import Commentary from "../Commentary/Commentary";
+import Comments from "../Comments/Comments";
+import CommentForm from "../CommentForm/CommentForm";
 import { useState } from "react";
 
 const Post = ({ avatar, nickname, img, description, comments }) => {
@@ -27,7 +28,7 @@ const Post = ({ avatar, nickname, img, description, comments }) => {
         <img src={img} alt={img} width={"100%"} height={"100%"} />
       </div>
       <div className="post-footer">
-        <div className="post-icons-wrapper">
+        <div className="post-icon-wrapper">
           <Icon
             type={"like"}
             className="post-like-svg"
@@ -42,7 +43,8 @@ const Post = ({ avatar, nickname, img, description, comments }) => {
           <span className="post-description-user">{nickname}</span>
           <span className="post-description-text">{description}</span>
         </div>
-        <Commentary comments={comments} />
+        <Comments comments={comments} />
+        <CommentForm />
       </div>
     </div>
   );
