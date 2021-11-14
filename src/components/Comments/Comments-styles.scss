@@ -1,0 +1,33 @@
+.no-comments-text {
+  text-align: center;
+  font-size: 12px;
+  color: grey;
+  margin: 0;
+}
+.comment-nickname {
+  font-weight: 700;
+  font-size: 13px;
+  padding-right: 10px;
+  padding-left: 20px;
+}
+.comment-text {
+  font-size: 14px;
+}
+.show-more-wrapper {
+  padding: 10px 0 0 20px;
+}
+.comments-show-more {
+  font-family: "Montserrat";
+  font-size: 13px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: #a0a0a0;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.comment-margin {
+  margin: 8px 0 8px 0;
+}
