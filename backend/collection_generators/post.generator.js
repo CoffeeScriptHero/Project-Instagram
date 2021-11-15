@@ -44,11 +44,11 @@ const postImageURL = [
 ];
 
 const getUserId = () => Math.floor(Math.random() * (USER_COUNT - 1));
-const getPostImageURL = (index) => postImageURL[index]
+const getPostImageURL = (index) => postImageURL[index - 1]
 const getDescription = (index) => `Post with id: ${index}.`
 
 const getPost = (index) => {
-    return user = {
+    return post = {
         _id: index,
         user_id: getUserId(),
         imagePostURL: getPostImageURL(index),

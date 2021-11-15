@@ -3,7 +3,8 @@ import Post from "../Post/Post";
 import user from "../../images/user1.jpg";
 import img1 from "../../images/waterfall.jpg";
 import img2 from "../../images/beach.jpg";
-import { useEffect } from "react";
+import { useEffect, useState} from "react";
+import axios from "axios";
 
 const Posts = () => {
   const buttonHandler = (e) => {
@@ -41,6 +42,25 @@ const Posts = () => {
     console.log(e.target.previousSibling.value);
   };
 
+  // const [posts, setPosts] = useState([]);
+  //
+  // const listPosts = posts.map(post =>
+  //     <Post
+  //     key={post.id}
+  //     avatar={post.user_id.userImageURL}
+  //     nickname={post.user_id.username}
+  //     img={post.imagePostURL}
+  //     description={post.description}
+  //     comments={[]}/>
+  //     )
+  //
+  // useEffect(() => {
+  //     axios('/posts')
+  //         .then((res) => {
+  //             setPosts(res.data)
+  //         })
+  // }, [])
+
   useEffect(() => {
     const textAreas = document.querySelectorAll(".commentary-field");
     const btns = document.querySelectorAll(".commentary-button");
@@ -62,6 +82,8 @@ const Posts = () => {
 
   return (
     <div>
+        {console.log(listPosts)}
+        {listPosts}
       <Post
         avatar={user}
         nickname={"deniskozarenko"}
