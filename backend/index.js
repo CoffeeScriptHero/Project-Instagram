@@ -5,19 +5,18 @@
 // const LikePost = require('./models/like.post.model');
 // const getLikesPost = require('./collection_generators/like.post.generator');
 
-const express = require('express');
-const ConfigService = require('./helpers/config.service');
-const { connectToDatabase } = require('./helpers/db.helper');
-const routersRegister = require('./api/index');
+const express = require("express");
+const ConfigService = require("./helpers/config.service");
+const { connectToDatabase } = require("./helpers/db.helper");
+const routersRegister = require("./api/index");
 
 // ConfigService.init();
 const app = express();
 
 async function main() {
-    routersRegister(app);
+  routersRegister(app);
 
-    await connectToDatabase();
-
+  await connectToDatabase();
 
     const port = ConfigService.get('APP_PORT');
     app.listen(port, () => {
@@ -26,6 +25,7 @@ async function main() {
         // generateLikesPost()
         console.log(`App start on port ${port}`);
     });
+
 }
 
 // async function generateUsers() {

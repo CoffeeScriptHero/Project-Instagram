@@ -26,9 +26,9 @@ const Posts = () => {
   const keyUpHandler = (e) => {
     const textArea = e.target;
     textArea.style.height = "18px";
-    if (textArea.scrollHeight > 64) {
+    if (textArea.scrollHeight > 26) {
       textArea.classList.add("commentary-field--bigger");
-      textArea.style.height = "64px";
+      textArea.style.height = "26px";
     } else {
       if (textArea.classList.contains("commentary-field--bigger")) {
         textArea.classList.remove("commentary-field--bigger");
@@ -106,7 +106,11 @@ const Posts = () => {
         nickname={"deniskozarenko"}
         img={img1}
         description={"Amazing view!"}
-        comments={[]}
+        comments={[
+          { nickname: "Trinity", text: "nice view" },
+          { nickname: "igor", text: "great" },
+          { nickname: "vasya", text: "1212?" },
+        ]}
       />
     </div>
   );
