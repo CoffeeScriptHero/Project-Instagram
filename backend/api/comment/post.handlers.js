@@ -6,9 +6,9 @@ exports.createComment = async (req, res) => {
 
     let comment;
 
-    Comment.countDocuments({}, (err, count) => {
+    LikePost.find({}).sort({_id: -1}).limit(1).then(res => {
         comment = new Comment({
-            _id: count + 1,
+            _id: res[0].id + 1,
             ...commentData
         });
         comment.save();
@@ -18,7 +18,4 @@ exports.createComment = async (req, res) => {
             res.status(200).send(comment)
         }
     })
-
-
-
 };
