@@ -1,18 +1,17 @@
 import types from "./types";
 
 const initialState = {
-  user: {},
-  // subscriptions:[]
+    user: {},
 }
 
 const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case types.SET_USER: {
-      return {...state, user: action.payload}
+    switch (action.type) {
+        case types.SET_USER: {
+            return {...state, user: action.payload}
+        }
+        default:
+            return state;
     }
-    default:
-      return state;
-  }
 }
 
 export default reducer

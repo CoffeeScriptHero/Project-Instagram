@@ -4,7 +4,7 @@ import UserPost from "../UserPost/UserPost";
 import Post from "../Post/Post";
 import axios from "axios";
 
-const UserPosts = ({userId}) => {
+const UserPosts = ({user}) => {
 
         const [userPosts, setUserPosts] = useState([]);
 
@@ -18,12 +18,12 @@ const UserPosts = ({userId}) => {
                 comments={[1,2,3,4,5]}/>
         )
 
-        useEffect(() => {
-                axios(`/posts/${userId}`)
-                    .then((res) => {
-                            setUserPosts(res.data)
-                    })
-        }, [userId])
+        // useEffect(() => {
+        //         axios(`/posts/${user._id}`)
+        //             .then((res) => {
+        //                     setUserPosts(res.data)
+        //             })
+        // }, [user])
 
 
     return (

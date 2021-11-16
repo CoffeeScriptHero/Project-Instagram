@@ -6,22 +6,21 @@ import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {userOperations, userSelectors} from "../../store/user";
 
-const User = () => {
-    const dispatch = useDispatch();
+const User = ({userId}) => {
+    // const user = useSelector(userSelectors.getUserId())
+    // const dispatch = useDispatch();
     const [subscription, setSubscription] = useState(true)
-    const user = useSelector(userSelectors.getUser())
-    // const [user, setUser] = useState([])
+    const [user, setUser] = useState({})
     useEffect(() => {
             axios(`/users/${user._id}`)
                 .then((res) => {
                     console.log(res.data);
-                    // setUser(userId)
-                    dispatch(userOperations.setUser((res.data)))
+                    setUser(res.data)
+                    // dispatch(userOperations.setUser((res.data)))
                 })
 
-    }, [user])
+    }, [])
     console.log(user);
-
     return (
         <div className="user-wrapper">
             <div className="user-header">
@@ -30,6 +29,7 @@ const User = () => {
                         src={user.userImageURL}
                         alt='user avatar'
                         width={"150"}
+                        height={"150"}
                         className="user-header-img avatar"
                     />
                 </div>
@@ -50,7 +50,7 @@ const User = () => {
                     </div>
                 </div>
             </div>
-            <UserPosts userId={user.id}/>
+            {/*<UserPosts user={user}/>*/}
         </div>
     );
 };

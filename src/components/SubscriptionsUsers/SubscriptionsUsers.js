@@ -16,8 +16,7 @@ const SubscriptionsUsers = () => {
             img={user.userImageURL}
             nickname={user.username}
             sidename={user.firstName}
-            description={user.description}
-            comments={[1,2,3,4,5]}/>
+            description={user.description}            />
     )
 
     useEffect(() => {
