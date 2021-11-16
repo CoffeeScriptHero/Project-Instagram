@@ -4,28 +4,31 @@
 // const getPosts = require('./collection_generators/post.generator');
 // const LikePost = require('./models/like.post.model');
 // const getLikesPost = require('./collection_generators/like.post.generator');
+// const Comment = require('./models/comment.model');
+// const getComment = require('./collection_generators/comment.generator');
 
-const express = require("express");
-const ConfigService = require("./helpers/config.service");
-const { connectToDatabase } = require("./helpers/db.helper");
-const routersRegister = require("./api/index");
+const express = require('express');
+const ConfigService = require('./helpers/config.service');
+const { connectToDatabase } = require('./helpers/db.helper');
+const routersRegister = require('./api/index');
 
 // ConfigService.init();
 const app = express();
 
 async function main() {
-  routersRegister(app);
+    routersRegister(app);
 
-  await connectToDatabase();
+    await connectToDatabase();
+
 
     const port = ConfigService.get('APP_PORT');
     app.listen(port, () => {
         // generateUsers()
         // generatePosts()
         // generateLikesPost()
+        // generateComments()
         console.log(`App start on port ${port}`);
     });
-
 }
 
 // async function generateUsers() {
@@ -46,6 +49,13 @@ async function main() {
 //     for(const chooseLikePost of getLikesPost) {
 //         const likePost = new LikePost(chooseLikePost);
 //         await likePost.save()
+//     }
+// }
+
+// async function generateComments() {
+//     for(const chooseComment of getComment) {
+//         const comment = new Comment(chooseComment);
+//         await comment.save()
 //     }
 // }
 
