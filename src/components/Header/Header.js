@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../../images/instagram-logo.jpg";
 import user from "../../images/user.jpg";
 import "./Header-styles.scss";
-import { NavLink } from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 const Header = () => {
   return (
@@ -10,7 +10,7 @@ const Header = () => {
       <NavLink exact to="/Main" className="header-logo-link">
         <img src={logo} alt={logo} width={"130"} className="header-logo-img" />
       </NavLink>
-      <NavLink exact to="/User" className="instagram-user-link">
+      <NavLink exact to="/User/1" className="instagram-user-link">
         <img
           src={user}
           alt={user}

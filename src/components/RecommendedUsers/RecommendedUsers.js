@@ -5,28 +5,27 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 
 const RecommendedUsers = () => {
-    // const [users, setUsers] = useState([]);
-    //
-    // const sideUsers = users.map(user => <SideUser key={user.id} img={user.userImageURL} nickname={user.username} button={true} />);
-    //
-    // useEffect(() => {
-    //     axios('/users')
-    //         .then((res) => {
-    //             setUsers(res.data);
-    //         })
-    // }, [])
+    const [users, setUsers] = useState([]);
 
-  return (
-    <div className="recommended-users-wrapper">
-        {/*{sideUsers}*/}
+    const sideUsers = users.map(user =>
+        <SideUser key={user._id}
+                  userId={user._id}
+                  img={user.userImageURL}
+                  nickname={user.username}
+                  button={true}/>);
 
-      <SideUser img={user} nickname={"vitalii_g"} button={true} />
-      <SideUser img={user} nickname={"vitalii_g"} button={true} />
-      <SideUser img={user} nickname={"vitalii_g"} button={true} />
-      <SideUser img={user} nickname={"vitalii_g"} button={true} />
-      <SideUser img={user} nickname={"vitalii_g"} button={true} />
-    </div>
-  );
+    useEffect(() => {
+        axios('/users')
+            .then((res) => {
+                setUsers(res.data);
+            })
+    }, [])
+
+    return (
+        <div className="recommended-users-wrapper">
+            {sideUsers}
+        </div>
+    );
 };
 
 export default RecommendedUsers;

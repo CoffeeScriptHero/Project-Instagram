@@ -1,18 +1,36 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import user from "../../images/user.jpg";
 import SideUser from "../SideUser/SideUser";
 import "./SubscriptionsUsers-styles.scss";
+import UserPost from "../UserPost/UserPost";
+import axios from "axios";
 
 const SubscriptionsUsers = () => {
+
+    const [subscriptionUsers, setSubscriptionUsers] = useState([]);
+
+    const users = subscriptionUsers.map(user =>
+        <SideUser
+            key={user._id}
+            userId={user._id}
+            img={user.userImageURL}
+            nickname={user.username}
+            sidename={user.firstName}
+            description={user.description}
+            comments={[1,2,3,4,5]}/>
+    )
+
+    useEffect(() => {
+        axios(`/users`)
+            .then((res) => {
+                setSubscriptionUsers(res.data)
+            })
+    }, [])
+
   return (
     <div className="subscriptions-users-wrapper">
       {/* пока пользователи задаются искуственно, потом они будут генерироваться в цикле из подписок */}
-      <SideUser img={user} nickname={"vitalii_g"} sidename={"Vitalii Griva"} />
-      <SideUser img={user} nickname={"Suzanna1"} sidename={"Suzanna Suzanna"} />
-      <SideUser img={user} nickname={"ErikBz"} sidename={"Erik Edward"} />
-      <SideUser img={user} nickname={"Trinity"} sidename={"Natalia Romanova"} />
-      <SideUser img={user} nickname={"Trinity"} sidename={"Natalia Romanova"} />
-      <SideUser img={user} nickname={"Trinity"} sidename={"Natalia Romanova"} />
+        {users}
     </div>
   );
 };

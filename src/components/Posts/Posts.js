@@ -42,24 +42,24 @@ const Posts = () => {
     console.log(e.target.previousSibling.value);
   };
 
-  // const [posts, setPosts] = useState([]);
-  //
-  // const listPosts = posts.map(post =>
-  //     <Post
-  //     key={post.id}
-  //     avatar={post.user_id.userImageURL}
-  //     nickname={post.user_id.username}
-  //     img={post.imagePostURL}
-  //     description={post.description}
-  //     comments={[]}/>
-  //     )
-  //
-  // useEffect(() => {
-  //     axios('/posts')
-  //         .then((res) => {
-  //             setPosts(res.data)
-  //         })
-  // }, [])
+  const [posts, setPosts] = useState([]);
+
+  const listPosts = posts.map(post =>
+      <Post
+      key={post._id}
+      avatar={post.user_id.userImageURL}
+      nickname={post.user_id.username}
+      img={post.imagePostURL}
+      description={post.description}
+      comments={[]}/>
+      )
+
+  useEffect(() => {
+      axios('/posts')
+          .then((res) => {
+              setPosts(res.data)
+          })
+  }, [])
 
   useEffect(() => {
     const textAreas = document.querySelectorAll(".commentary-field");
@@ -82,8 +82,7 @@ const Posts = () => {
 
   return (
     <div>
-        {console.log(listPosts)}
-        {listPosts}
+      {listPosts}
       <Post
         avatar={user}
         nickname={"deniskozarenko"}

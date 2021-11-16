@@ -17,6 +17,7 @@ const Post = ({ avatar, nickname, img, description, comments }) => {
             src={avatar}
             alt={avatar}
             width={"40"}
+            height={"40"}
             className="post-user-img avatar"
           />
         </a>

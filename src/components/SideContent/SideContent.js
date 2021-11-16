@@ -8,7 +8,7 @@ import Recommended from "../Recommended/Recommended";
 const SideContent = () => {
   return (
     <div className="side-content-wrapper">
-      <SideUser img={user} nickname={"funnydoge2021"} sidename={"Funny Doge"} />
+      <SideUser img={user} nickname={"funnydoge2021"} sidename={"Funny Doge"} userId={1}/>
       <Subscriptions />
       <Recommended />
     </div>
