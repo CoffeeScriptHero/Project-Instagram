@@ -1,5 +1,5 @@
-const GET_ALL_USERS = './user/SAVE_USER'
+const GET_ALL_USERS = "./user/SAVE_USER";
 
-export default {
-    GET_ALL_USERS
-}
+const typesObj = { GET_ALL_USERS };
+
+export default typesObj;

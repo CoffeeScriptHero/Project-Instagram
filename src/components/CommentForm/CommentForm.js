@@ -1,14 +1,19 @@
 import React from "react";
 import "./CommentForm-styles.scss";
 
-const CommentaryForm = () => {
+const CommentaryForm = ({ postId }) => {
   return (
     <form className="commentary-form">
       <textarea
         className="commentary-field"
         placeholder="Добавьте комментарий.."
       ></textarea>
-      <button className="commentary-button" type="submit" disabled>
+      <button
+        id={`button-${postId}`}
+        className="commentary-button"
+        type="submit"
+        disabled
+      >
         Опубликовать
       </button>
     </form>
