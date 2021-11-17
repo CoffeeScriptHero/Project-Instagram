@@ -3,11 +3,8 @@ import "./Comments-styles.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const Comments = ({ postId }) => {
+const Comments = ({ lastComment, comments }) => {
   const [showAll, setShowAll] = useState(false);
-  const [comments, setComments] = useState([]);
-  const [lastCommentUsername, setLastCommentUsername] = useState("");
-  const [lastCommentText, setLastCommentText] = useState("");
 
   // const listComments = comments.map((c) => (
   //   <div className="comment-wrapper comment-margin">
@@ -15,17 +12,6 @@ const Comments = ({ postId }) => {
   //     <span className="comment-text">{c.post_id.text}</span>
   //   </div>
   // ));
-
-  useEffect(() => {
-    axios(`/comments/${postId}`).then((res) => {
-      const lastElement = res.data[res.data.length - 1];
-      if (lastElement) {
-        setComments(res.data);
-        setLastCommentUsername(lastElement.user_id.username);
-        setLastCommentText(lastElement.text);
-      }
-    });
-  }, []);
 
   return (
     <div>
@@ -35,8 +21,10 @@ const Comments = ({ postId }) => {
         )}
         {comments.length !== 0 && !showAll && (
           <div className="comment-wrapper">
-            <span className="comment-nickname">{lastCommentUsername}</span>
-            <span className="comment-text">{lastCommentText}</span>
+            <span className="comment-nickname">
+              {lastComment.user_id.username}
+            </span>
+            <span className="comment-text">{lastComment.text}</span>
           </div>
         )}
         {comments.length >= 2 && !showAll && (

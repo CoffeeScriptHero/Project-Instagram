@@ -34,23 +34,7 @@ const Posts = () => {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const postId = e.target.id.slice(e.target.id.lastIndexOf("-") + 1);
-    const text = e.target.previousSibling.value;
-    axios
-      .post("/comments", {
-        user_id: 1,
-        post_id: postId,
-        text: text,
-      })
-      .then((res) => console.log(res));
-
-    e.target.previousSibling.value = "";
-  };
-
   const [posts, setPosts] = useState([]);
-
   const listPosts = posts.map((post) => (
     <Post
       key={post._id}
@@ -63,29 +47,24 @@ const Posts = () => {
   ));
 
   useEffect(() => {
-    axios("/posts").then((res) => {
-      setPosts(res.data);
-    });
+    axios("/posts")
+      .then((res) => {
+        setPosts([res.data[14], res.data[5], res.data[27]]);
+      })
+      .then(() => {
+        const textAreas = document.querySelectorAll(".commentary-field");
+        textAreas.forEach((textArea) => {
+          textArea.addEventListener(
+            "input",
+            (e) => {
+              keyUpHandler(e);
+              buttonHandler(e);
+            },
+            false
+          );
+        });
+      });
   }, []);
-
-  useEffect(() => {
-    const textAreas = document.querySelectorAll(".commentary-field");
-    const btns = document.querySelectorAll(".commentary-button");
-    textAreas.forEach((textArea) => {
-      textArea.addEventListener(
-        "input",
-        (e) => {
-          keyUpHandler(e);
-          buttonHandler(e);
-        },
-        false
-      );
-    });
-
-    btns.forEach((btn) => {
-      btn.addEventListener("click", handleSubmit);
-    });
-  });
 
   return <div>{listPosts}</div>;
 };
