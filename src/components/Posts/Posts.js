@@ -1,6 +1,6 @@
 import React from "react";
 import Post from "../Post/Post";
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import axios from "axios";
 
 const Posts = () => {
@@ -54,19 +54,22 @@ const Posts = () => {
   const listPosts = posts.map((post) => (
     <Post
       key={post._id}
+      userId={post.user_id._id}
       postId={post._id}
       avatar={post.user_id.userImageURL}
       nickname={post.user_id.username}
       img={post.imagePostURL}
       description={post.description}
-    />
-  ));
+      comments={[]}/>
+      )
 
   useEffect(() => {
-    axios("/posts").then((res) => {
-      setPosts(res.data);
-    });
-  }, []);
+      axios('/posts')
+          .then((res) => {
+              setPosts(res.data)
+          })
+  }, [])
+
 
   useEffect(() => {
     const textAreas = document.querySelectorAll(".commentary-field");
@@ -87,7 +90,12 @@ const Posts = () => {
     });
   });
 
-  return <div>{listPosts}</div>;
+  return (
+    <div>
+      {listPosts}
+    </div>
+  );
+
 };
 
 export default Posts;
