@@ -1,8 +1,5 @@
 import React from "react";
 import Post from "../Post/Post";
-import user from "../../images/user1.jpg";
-import img1 from "../../images/waterfall.jpg";
-import img2 from "../../images/beach.jpg";
 import { useEffect, useState} from "react";
 import axios from "axios";
 
@@ -47,6 +44,7 @@ const Posts = () => {
   const listPosts = posts.map(post =>
       <Post
       key={post._id}
+      userId={post.user_id._id}
       avatar={post.user_id.userImageURL}
       nickname={post.user_id.username}
       img={post.imagePostURL}
@@ -83,34 +81,6 @@ const Posts = () => {
   return (
     <div>
       {listPosts}
-      <Post
-        avatar={user}
-        nickname={"deniskozarenko"}
-        img={img1}
-        description={"Amazing view!"}
-        comments={[]}
-      />
-      <Post
-        avatar={user}
-        nickname={"anastasi_s"}
-        img={img2}
-        description={"1234124"}
-        comments={[
-          { nickname: "Trinity", text: "nice view" },
-          { nickname: "igor", text: "great" },
-        ]}
-      />
-      <Post
-        avatar={user}
-        nickname={"deniskozarenko"}
-        img={img1}
-        description={"Amazing view!"}
-        comments={[
-          { nickname: "Trinity", text: "nice view" },
-          { nickname: "igor", text: "great" },
-          { nickname: "vasya", text: "1212?" },
-        ]}
-      />
     </div>
   );
 };

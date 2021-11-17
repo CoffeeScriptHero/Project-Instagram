@@ -1,32 +1,27 @@
 import React, {useEffect, useState} from 'react';
 import "./User-styles.scss"
+import user1 from "../../images/user1.jpg";
 import Button from "../../components/Button/Button";
 import UserPosts from "../../components/UserPosts/UserPosts";
 import axios from "axios";
-import {useDispatch, useSelector} from "react-redux";
-import {userOperations, userSelectors} from "../../store/user";
 
-const User = ({userId}) => {
-    // const user = useSelector(userSelectors.getUserId())
-    // const dispatch = useDispatch();
+const User = ({user}) => {
     const [subscription, setSubscription] = useState(true)
-    const [user, setUser] = useState({})
+    const [postsNumber, setPostsNumber] = useState(null)
     useEffect(() => {
-            axios(`/users/${user._id}`)
-                .then((res) => {
-                    console.log(res.data);
-                    setUser(res.data)
-                    // dispatch(userOperations.setUser((res.data)))
-                })
+        axios(`/posts/${user._id}`)
+            .then((res) => {
+                setPostsNumber(res.data.length)
+            })
+    }, [user])
 
-    }, [])
     console.log(user);
     return (
         <div className="user-wrapper">
             <div className="user-header">
                 <div className="user-header-img-container">
                     <img
-                        src={user.userImageURL}
+                        src={user.userImageURL ? user.userImageURL :  user1}
                         alt='user avatar'
                         width={"150"}
                         height={"150"}
@@ -39,18 +34,19 @@ const User = ({userId}) => {
                         <Button classes='user-header-button' text={subscription && 'subscribe'}/>
                     </div>
                     <div className="user-header-center">
-                        <span className="user-header-counter">39 публикаций</span>
+                        <span className="user-header-counter">{postsNumber} публикаций</span>
                         <span
                             className="user-header-counter">{user?.subscribers?.length && user.subscribers.length} подписчиков</span>
                         <span
                             className="user-header-counter">{user?.subscriptions?.length && user.subscriptions.length} подписок</span>
                     </div>
                     <div className="user-header-bot">
-                        <p className="user-header-description">{user.aboutMe}</p>
+                        <h2 className="user-header-description">{user.firstName}</h2>
+                        <p className="user-header-description">{user.aboutMe} Check my webSite: {user.webSite}</p>
                     </div>
                 </div>
             </div>
-            {/*<UserPosts user={user}/>*/}
+            <UserPosts user={user}/>
         </div>
     );
 };

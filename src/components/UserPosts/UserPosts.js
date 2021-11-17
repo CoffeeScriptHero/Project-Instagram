@@ -18,12 +18,12 @@ const UserPosts = ({user}) => {
                 comments={[1,2,3,4,5]}/>
         )
 
-        // useEffect(() => {
-        //         axios(`/posts/${user._id}`)
-        //             .then((res) => {
-        //                     setUserPosts(res.data)
-        //             })
-        // }, [user])
+        useEffect(() => {
+                axios(`/posts/${user._id}`)
+                    .then((res) => {
+                            setUserPosts(res.data)
+                    })
+        }, [user])
 
 
     return (
