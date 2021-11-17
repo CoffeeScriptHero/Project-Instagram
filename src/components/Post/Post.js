@@ -10,7 +10,7 @@ import axios from "axios";
 import {userOperations} from "../../store/user";
 
 
-const Post = ({avatar, nickname, img, description, comments, userId}) => {
+const Post = ({avatar, postId, nickname, img, description, userId}) => {
     const [filled, setFilled] = useState(false);
     const color = filled === true ? "red" : "black";
     const dispatch = useDispatch();
@@ -53,7 +53,7 @@ const Post = ({avatar, nickname, img, description, comments, userId}) => {
                     <span className="post-description-user">{nickname}</span>
                     <span className="post-description-text">{description}</span>
                 </div>
-                <Comments comments={comments}/>
+                <Comments postId={postId}/>
                 <CommentForm/>
             </div>
         </div>

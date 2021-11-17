@@ -61,7 +61,7 @@ const Posts = () => {
       img={post.imagePostURL}
       description={post.description}
       comments={[]}/>
-      )
+      ))
 
   useEffect(() => {
       axios('/posts')
