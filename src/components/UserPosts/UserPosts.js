@@ -1,34 +1,34 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import "./UserPosts-styles.scss"
-import img2 from "../../images/beach.jpg";
 import UserPost from "../UserPost/UserPost";
+import Post from "../Post/Post";
+import axios from "axios";
 
-const UserPosts = ({Posts}) => {
-    // const userPosts = Posts.map(post => <Post key={post.id}  avatar={post.avatar} description={post.description} img={post.img} nickname={post.nickname}/>)
+const UserPosts = ({user}) => {
+
+        const [userPosts, setUserPosts] = useState([]);
+
+        const listPosts = userPosts.map(userPost =>
+            <UserPost
+                key={userPost.user_id._id}
+                avatar={userPost.user_id.userImageURL}
+                username={userPost.user_id.username}
+                img={userPost.imagePostURL}
+                description={userPost.description}
+                comments={[1,2,3,4,5]}/>
+        )
+
+        useEffect(() => {
+                axios(`/posts/${user._id}`)
+                    .then((res) => {
+                            setUserPosts(res.data)
+                    })
+        }, [user])
+
+
     return (
         <div className='user-posts-list'>
-            {/*{userPosts}*/}
-            <UserPost
-                id={1}
-                img={img2}
-            />
-            <UserPost
-                id={1}
-                img={img2}
-            />
-            <UserPost
-                id={1}
-                img={img2}
-            />
-            <UserPost
-                id={1}
-                img={img2}
-            />
-            <UserPost
-                id={1}
-                img={img2}
-            />
-
+            {listPosts}
         </div>
     );
 };

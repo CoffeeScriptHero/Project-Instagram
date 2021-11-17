@@ -4,9 +4,12 @@ import Icon from "../Icon/Icon";
 import Comments from "../Comments/Comments";
 import CommentForm from "../CommentForm/CommentForm";
 import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import axios from "axios";
+import { userOperations } from "../../store/user";
 
-const Post = ({ avatar, postId, nickname, img, description }) => {
+const Post = ({ avatar, postId, nickname, img, description, userId }) => {
   const [filled, setFilled] = useState(false);
   const [comments, setComments] = useState([]);
   const [lastComment, setLastComment] = useState({
@@ -15,6 +18,13 @@ const Post = ({ avatar, postId, nickname, img, description }) => {
   });
   const [id, setId] = useState(null);
   const [likesCount, setLikesCount] = useState(0);
+
+  const dispatch = useDispatch();
+  const UserRefHandler = () => {
+    axios(`/users/${userId}`).then((res) => {
+      dispatch(userOperations.setUser(res.data));
+    });
+  };
 
   const color = filled === true ? "red" : "black";
 
@@ -92,18 +102,29 @@ const Post = ({ avatar, postId, nickname, img, description }) => {
   return (
     <div id={postId} className="post-wrapper">
       <div className="post-header">
-        <a href={"/#"} className="post-user-link">
+        <NavLink
+          exact
+          to={`/User/${userId}`}
+          className="post-user-link"
+          onClick={UserRefHandler}
+        >
           <img
             src={avatar}
-            alt={avatar}
+            alt={img}
             width={"50"}
             height={"50"}
             className="post-user-img avatar"
           />
-        </a>
-        <a href={"/#"} className="post-user-nickname">
-          {nickname}
-        </a>
+        </NavLink>
+
+        <NavLink
+          exact
+          to={`/User/${userId}`}
+          className="side-link"
+          onClick={UserRefHandler}
+        >
+          <p className="post-user-nickname">{nickname}</p>
+        </NavLink>
       </div>
       <div className="post-body">
         <img
