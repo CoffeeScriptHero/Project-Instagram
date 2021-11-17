@@ -9,6 +9,7 @@ import {useDispatch} from "react-redux";
 import axios from "axios";
 import {userOperations} from "../../store/user";
 
+
 const Post = ({avatar, nickname, img, description, comments, userId}) => {
     const [filled, setFilled] = useState(false);
     const color = filled === true ? "red" : "black";

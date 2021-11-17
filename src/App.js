@@ -10,7 +10,7 @@ const App = () => {
       <Header />
       {/* <PostModal
         img={img}
-        userImg={user}
+        userImg={user}ZZYU
         nickname={"deniskozarenko"}
         comments={[
           { nickname: "Trinity", text: "nice view" },

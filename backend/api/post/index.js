@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const { getPostsByUserId, getPosts } = require('./get.handlers')
+const { getPostsByUserId, getPosts } = require("./get.handlers");
 
-router.get('/posts/:user_id', getPostsByUserId);
-router.get('/posts', getPosts)
+router.get("/posts/:user_id", getPostsByUserId);
+router.get("/posts", getPosts);
 
 module.exports = router;

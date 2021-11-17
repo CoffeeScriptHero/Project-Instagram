@@ -36,15 +36,26 @@ const Posts = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.previousSibling.value);
+    const postId = e.target.id.slice(e.target.id.lastIndexOf("-") + 1);
+    const text = e.target.previousSibling.value;
+    axios
+      .post("/comments", {
+        user_id: 1,
+        post_id: postId,
+        text: text,
+      })
+      .then((res) => console.log(res));
+
+    e.target.previousSibling.value = "";
   };
 
   const [posts, setPosts] = useState([]);
 
-  const listPosts = posts.map(post =>
-      <Post
+  const listPosts = posts.map((post) => (
+    <Post
       key={post._id}
       userId={post.user_id._id}
+      postId={post._id}
       avatar={post.user_id.userImageURL}
       nickname={post.user_id.username}
       img={post.imagePostURL}
@@ -58,6 +69,7 @@ const Posts = () => {
               setPosts(res.data)
           })
   }, [])
+
 
   useEffect(() => {
     const textAreas = document.querySelectorAll(".commentary-field");
@@ -83,6 +95,7 @@ const Posts = () => {
       {listPosts}
     </div>
   );
+
 };
 
 export default Posts;
