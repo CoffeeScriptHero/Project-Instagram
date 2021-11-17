@@ -1,9 +1,6 @@
 import React from "react";
 import Post from "../Post/Post";
-import user from "../../images/user1.jpg";
-import img1 from "../../images/waterfall.jpg";
-import img2 from "../../images/beach.jpg";
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 const Posts = () => {
@@ -39,27 +36,37 @@ const Posts = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.previousSibling.value);
+    const postId = e.target.id.slice(e.target.id.lastIndexOf("-") + 1);
+    const text = e.target.previousSibling.value;
+    axios
+      .post("/comments", {
+        user_id: 1,
+        post_id: postId,
+        text: text,
+      })
+      .then((res) => console.log(res));
+
+    e.target.previousSibling.value = "";
   };
 
-  // const [posts, setPosts] = useState([]);
-  //
-  // const listPosts = posts.map(post =>
-  //     <Post
-  //     key={post.id}
-  //     avatar={post.user_id.userImageURL}
-  //     nickname={post.user_id.username}
-  //     img={post.imagePostURL}
-  //     description={post.description}
-  //     comments={[]}/>
-  //     )
-  //
-  // useEffect(() => {
-  //     axios('/posts')
-  //         .then((res) => {
-  //             setPosts(res.data)
-  //         })
-  // }, [])
+  const [posts, setPosts] = useState([]);
+
+  const listPosts = posts.map((post) => (
+    <Post
+      key={post._id}
+      postId={post._id}
+      avatar={post.user_id.userImageURL}
+      nickname={post.user_id.username}
+      img={post.imagePostURL}
+      description={post.description}
+    />
+  ));
+
+  useEffect(() => {
+    axios("/posts").then((res) => {
+      setPosts(res.data);
+    });
+  }, []);
 
   useEffect(() => {
     const textAreas = document.querySelectorAll(".commentary-field");
@@ -80,40 +87,7 @@ const Posts = () => {
     });
   });
 
-  return (
-    <div>
-        {console.log(listPosts)}
-        {listPosts}
-      <Post
-        avatar={user}
-        nickname={"deniskozarenko"}
-        img={img1}
-        description={"Amazing view!"}
-        comments={[]}
-      />
-      <Post
-        avatar={user}
-        nickname={"anastasi_s"}
-        img={img2}
-        description={"1234124"}
-        comments={[
-          { nickname: "Trinity", text: "nice view" },
-          { nickname: "igor", text: "great" },
-        ]}
-      />
-      <Post
-        avatar={user}
-        nickname={"deniskozarenko"}
-        img={img1}
-        description={"Amazing view!"}
-        comments={[
-          { nickname: "Trinity", text: "nice view" },
-          { nickname: "igor", text: "great" },
-          { nickname: "vasya", text: "1212?" },
-        ]}
-      />
-    </div>
-  );
+  return <div>{listPosts}</div>;
 };
 
 export default Posts;

@@ -5,18 +5,19 @@ import Comments from "../Comments/Comments";
 import CommentForm from "../CommentForm/CommentForm";
 import { useState } from "react";
 
-const Post = ({ avatar, nickname, img, description, comments }) => {
+const Post = ({ avatar, postId, nickname, img, description }) => {
   const [filled, setFilled] = useState(false);
   const color = filled === true ? "red" : "black";
 
   return (
-    <div className="post-wrapper">
+    <div id={postId} className="post-wrapper">
       <div className="post-header">
         <a href={"/#"} className="post-user-link">
           <img
             src={avatar}
             alt={avatar}
-            width={"40"}
+            width={"50"}
+            height={"50"}
             className="post-user-img avatar"
           />
         </a>
@@ -25,7 +26,7 @@ const Post = ({ avatar, nickname, img, description, comments }) => {
         </a>
       </div>
       <div className="post-body">
-        <img src={img} alt={img} width={"100%"} height={"100%"} />
+        <img src={img} alt={img} className="post-body-img" />
       </div>
       <div className="post-footer">
         <div className="post-icon-wrapper">
@@ -43,8 +44,8 @@ const Post = ({ avatar, nickname, img, description, comments }) => {
           <span className="post-description-user">{nickname}</span>
           <span className="post-description-text">{description}</span>
         </div>
-        <Comments comments={comments} />
-        <CommentForm />
+        <Comments postId={postId} />
+        <CommentForm postId={postId} />
       </div>
     </div>
   );
