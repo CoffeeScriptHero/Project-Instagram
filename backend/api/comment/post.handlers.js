@@ -6,9 +6,9 @@ exports.createComment = async (req, res) => {
 
     let comment;
 
-    LikePost.find({}).sort({_id: -1}).limit(1).then(res => {
+    Comment.find({}).sort({_id: -1}).limit(1).then(resId => {
         comment = new Comment({
-            _id: res[0].id + 1,
+            _id: +resId[0].id + 1,
             ...commentData
         });
         comment.save();
