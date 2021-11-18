@@ -6,10 +6,10 @@ import CommentForm from "../CommentForm/CommentForm";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import axios from "axios";
 import { userOperations } from "../../store/user";
+import axios from "axios";
 
-const Post = ({ avatar, postId, nickname, img, description, userId }) => {
+const Post = ({ userImg, postId, nickname, img, description, userId }) => {
   const [filled, setFilled] = useState(false);
   const [comments, setComments] = useState([]);
   const [lastComment, setLastComment] = useState({
@@ -37,6 +37,7 @@ const Post = ({ avatar, postId, nickname, img, description, userId }) => {
           user_id: { username: lastElement.user_id.username },
           text: lastElement.text,
         });
+        settings.comments = res.data;
       }
     });
   };
@@ -73,7 +74,6 @@ const Post = ({ avatar, postId, nickname, img, description, userId }) => {
       });
     });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const postId = e.target.id.slice(e.target.id.lastIndexOf("-") + 1);
@@ -89,6 +89,18 @@ const Post = ({ avatar, postId, nickname, img, description, userId }) => {
       });
     e.target.previousSibling.value = "";
     e.target.classList.remove("commentary-button--active");
+  };
+
+  const settings = {
+    img: img,
+    userImg: userImg,
+    nickname: nickname,
+    description: description,
+    comments: comments,
+    lastComment: lastComment,
+    postId: postId,
+    handleSubmit: handleSubmit,
+    getLastComment: getLastComment,
   };
 
   useEffect(() => {
@@ -109,7 +121,7 @@ const Post = ({ avatar, postId, nickname, img, description, userId }) => {
           onClick={UserRefHandler}
         >
           <img
-            src={avatar}
+            src={userImg}
             alt={img}
             width={"50"}
             height={"50"}
@@ -149,7 +161,11 @@ const Post = ({ avatar, postId, nickname, img, description, userId }) => {
           <span className="post-description-user">{nickname}</span>
           <span className="post-description-text">{description}</span>
         </div>
-        <Comments lastComment={lastComment} comments={comments} />
+        <Comments
+          lastComment={lastComment}
+          comments={comments}
+          settings={settings}
+        />
         <CommentForm postId={postId} />
       </div>
     </div>
