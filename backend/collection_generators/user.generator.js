@@ -43,7 +43,7 @@ const userImageURL = [
     "https://res.cloudinary.com/da0yv4czf/image/upload/v1636563146/userImage/6_kkisov.jpg",
     "https://res.cloudinary.com/da0yv4czf/image/upload/v1636563145/userImage/28_dmllw5.jpg",
     "https://res.cloudinary.com/da0yv4czf/image/upload/v1636563145/userImage/27_m8t6nl.jpg",
-    "https://res.cloudinary.com/da0yv4czf/image/upload/v1636563145/userImage/27_m8t6nl.jpg",
+    "https://res.cloudinary.com/da0yv4czf/image/upload/v1636563152/userImage/25_fwp6fi.png",
     "https://res.cloudinary.com/da0yv4czf/image/upload/v1636563145/userImage/4_aofbcg.jpg",
     "https://res.cloudinary.com/da0yv4czf/image/upload/v1636563145/userImage/26_fljzzh.jpg",
     "https://res.cloudinary.com/da0yv4czf/image/upload/v1636563145/userImage/22_l71f4a.jpg",
@@ -64,7 +64,7 @@ const userImageURL = [
     "https://res.cloudinary.com/da0yv4czf/image/upload/v1636563143/userImage/10_lpt48x.jpg"
 ];
 const getUsername = (index) => usernames[index-1];
-const getUserImageURL = () => userImageURL[Math.floor(Math.random() * (userImageURL.length-1))];
+const getUserImageURL = (index) => userImageURL[index-1];
 const getFirstName = () => firstNames[Math.floor(Math.random() * (firstNames.length-1))];
 const getPassword = () => {
     var length = 8,
@@ -82,10 +82,11 @@ const getAboutMe = (name) => `Hello my name ${name}!`;
 const getUser = (index) => {
     const username = getUsername(index);
     const firstName = getFirstName();
+    const image = getUserImageURL(index)
     return user = {
         _id: index,
         username: username,
-        userImageURL: getUserImageURL(),
+        userImageURL: image,
         firstName: firstName,
         password: getPassword(),
         webSite: getWebSite(username),

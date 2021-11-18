@@ -2,8 +2,8 @@ const Post = require("../../models/post.model");
 
 exports.getPostsByUserId = async (req, res) => {
   const post = await Post.find({ user_id: req.params.user_id })
-    .populate("user_id")
-    .exec();
+      .populate("user_id")
+      .exec();
 
   if (!post) {
     res.status(404).send("Posts not found!").end();

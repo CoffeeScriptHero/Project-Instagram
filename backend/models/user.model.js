@@ -8,8 +8,14 @@ const UserSchema = mongoose.Schema({
     password: String,
     webSite: String,
     aboutMe: String,
-    subscribers: [Number],
-    subscriptions: [Number]
+    subscribers: [{
+        _id: Number,
+        user_id: {type: Number, ref: 'User'}
+    }],
+    subscriptions: [{
+        _id: Number,
+        user_id: {type: Number, ref: 'User'}
+    }]
 })
 
 module.exports = mongoose.model('User', UserSchema)
