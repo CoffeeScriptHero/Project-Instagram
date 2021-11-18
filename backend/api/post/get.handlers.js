@@ -13,7 +13,16 @@ exports.getPostsByUserId = async (req, res) => {
 };
 
 exports.getPosts = async (req, res) => {
-  const posts = await Post.find().populate("user_id").exec();
+  let posts
+  if("count" in req.query) {
+    posts = await Post.find({
+      _id: {
+        $in: Array.from({ length: req.query.count },(_, index) => index + 1)
+      }
+    }).populate("user_id").exec();
+  } else {
+    posts = await Post.find().populate("user_id").exec();
+  }
 
   res.send(posts).end();
 };

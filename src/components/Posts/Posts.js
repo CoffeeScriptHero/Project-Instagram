@@ -2,6 +2,7 @@ import React from "react";
 import Post from "../Post/Post";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 const Posts = () => {
   const buttonHandler = (e) => {
@@ -46,27 +47,40 @@ const Posts = () => {
     />
   ));
 
-  useEffect(() => {
-    axios("/posts")
-      .then((res) => {
-        setPosts(res.data);
-      })
-      .then(() => {
-        const textAreas = document.querySelectorAll(".commentary-field");
-        textAreas.forEach((textArea) => {
-          textArea.addEventListener(
-            "input",
-            (e) => {
-              keyUpHandler(e);
-              buttonHandler(e);
-            },
-            false
-          );
-        });
-      });
-  }, []);
+  const [countPosts, setCountPosts] = useState(5);
 
-  return <div>{listPosts}</div>;
+  useEffect(() => {
+    axios.get("/posts",{params:{count: countPosts}})
+        .then((res) => {
+          setPosts(res.data);
+        })
+        .then(() => {
+          const textAreas = document.querySelectorAll(".commentary-field");
+          textAreas.forEach((textArea) => {
+            textArea.addEventListener(
+                "input",
+                (e) => {
+                  keyUpHandler(e);
+                  buttonHandler(e);
+                },
+                false
+            );
+          });
+        });
+  }, [countPosts]);
+
+  const getMorePosts = () => {
+    setCountPosts(countPosts + 5)
+  }
+
+  return <InfiniteScroll
+      style={{ overflow: 'hidden' }}
+      dataLength={posts.length}
+      next={getMorePosts}
+      hasMore={true}
+      loader={<h4>Loading...</h4>}>
+    {listPosts}
+  </InfiniteScroll>;
 };
 
 export default Posts;

@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import "./SideUser-styles.scss";
 import {NavLink} from "react-router-dom";
 import axios from "axios";
@@ -9,12 +9,14 @@ import user1 from "../../images/user1.jpg";
 const SideUser = ({img, nickname, sidename, userId, button}) => {
 
     const dispatch = useDispatch();
+
     const UserRefHandler = () => {
         axios(`/users/${userId}`)
             .then((res) => {
                 dispatch(userOperations.setUser((res.data)))
             })
     }
+
     return (
         <div className="side-user-wrapper">
             <NavLink exact to={`/User/${userId}`} className="side-img-link" onClick={UserRefHandler}>

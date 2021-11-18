@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import logo from "../../images/instagram-logo.jpg";
 import user1 from "../../images/user1.jpg";
 import "./Header-styles.scss";
@@ -10,11 +10,18 @@ import {userOperations} from "../../store/user";
 const Header = () => {
     const dispatch = useDispatch();
     const UserRefHandler = () => {
-        axios(`/users/1`)
+        axios(`/users/${1}`)
             .then((res) => {
                 dispatch(userOperations.setUser((res.data)))
             })
     }
+
+    useEffect(() => {
+        axios(`/users/${1}`)
+            .then((res) => {
+                dispatch(userOperations.setUser((res.data)))
+            })
+    })
   return (
     <div className="header-wrapper">
       <NavLink exact to="/Main" className="header-logo-link" onClick={UserRefHandler}>

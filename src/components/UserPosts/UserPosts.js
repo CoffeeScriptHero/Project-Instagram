@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import "./UserPosts-styles.scss"
 import UserPost from "../UserPost/UserPost";
-import Post from "../Post/Post";
 import axios from "axios";
 
 const UserPosts = ({user}) => {
