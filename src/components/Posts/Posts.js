@@ -39,7 +39,7 @@ const Posts = () => {
     <Post
       key={post._id}
       postId={post._id}
-      avatar={post.user_id.userImageURL}
+      userImg={post.user_id.userImageURL}
       nickname={post.user_id.username}
       img={post.imagePostURL}
       description={post.description}
@@ -49,7 +49,7 @@ const Posts = () => {
   useEffect(() => {
     axios("/posts")
       .then((res) => {
-        setPosts([res.data[14], res.data[5], res.data[27]]);
+        setPosts(res.data);
       })
       .then(() => {
         const textAreas = document.querySelectorAll(".commentary-field");

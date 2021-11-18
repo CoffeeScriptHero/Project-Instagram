@@ -29,3 +29,10 @@
 .commentary-field--bigger {
   overflow-y: scroll;
 }
+.commentary-field--bigger::-webkit-scrollbar {
+  display: none;
+}
+.commentary-field--bigger {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

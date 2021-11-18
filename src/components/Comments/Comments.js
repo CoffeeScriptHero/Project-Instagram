@@ -1,17 +1,24 @@
 import React from "react";
 import "./Comments-styles.scss";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { modalOperations } from "../../store/modal/index.js";
+import { connect } from "react-redux";
 
-const Comments = ({ lastComment, comments }) => {
-  const [showAll, setShowAll] = useState(false);
-
-  // const listComments = comments.map((c) => (
-  //   <div className="comment-wrapper comment-margin">
-  //     <span className="comment-nickname">{c.user_id.username}</span>
-  //     <span className="comment-text">{c.post_id.text}</span>
-  //   </div>
-  // ));
+const Comments = ({
+  lastComment,
+  comments,
+  showAll,
+  settings,
+  saveModalSettings,
+}) => {
+  const listComments = comments.map((c) => (
+    <div
+      className="comment-wrapper comment-margin"
+      key={c.user_id._id * Math.random()}
+    >
+      <span className="comment-nickname">{c.user_id.username}</span>
+      <span className="comment-text">{c.text}</span>
+    </div>
+  ));
 
   return (
     <div>
@@ -29,15 +36,27 @@ const Comments = ({ lastComment, comments }) => {
         )}
         {comments.length >= 2 && !showAll && (
           <div className="show-more-wrapper">
-            <button className="comments-show-more">
+            <button
+              className="comments-show-more"
+              onClick={() => {
+                saveModalSettings(settings);
+              }}
+            >
               Показать больше ({comments.length})
             </button>
           </div>
         )}
-        {/* {comments.length >= 2 && showAll && listComments} */}
+        {comments.length >= 2 && showAll && listComments}
       </div>
     </div>
   );
 };
 
-export default Comments;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    saveModalSettings: (settings) =>
+      dispatch(modalOperations.saveModalSettings(settings)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Comments);
